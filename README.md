@@ -1,6 +1,7 @@
-Anonymized transactions using coin mixing technology. 1-Second-Transactions. Network stability with masternodes, each is secured with a collateral of 10.000 BKZ.
+BanKitz
+=======
 
-For further information visit us at [bankitz.online](https://bankitz.online/) or visit our ANN thread at [BitcoinTalk](https://bitcointalk.org/index.php?topic=3133202.0)
+Bankitt (BKT) => BanKitz (BKZ)
 
 # Coin Specs
 
