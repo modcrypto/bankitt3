@@ -140,39 +140,6 @@ public:
         genesis.nBits  = 0x1e0ffff0;
         genesis.nNonce = 886886;//3095779;//498585;
 		
-        /*
-new mainnet genesis merkle root: 09f32251ceb8a0d37dc9777686354596e5bf2b5f9d1de71ed00e2f9615cce5bd
-new mainnet genesis nonce: 3095779  time:1534172751
-new mainnet genesis hash: 00000fc242ea1a7de6af3463a216a655178a8772aec282eddffb372c05798721
-
-new mainnet genesis merkle root: d53fd768da2794312a1c6879b11baa6325be9ab99b43d52a6b09b5017fbb5789
-new mainnet genesis nonce: 886886  time:1534554123
-new mainnet genesis hash: 000006b9477e087c9b7c1b5b94619a7b4f1616b88a1ca2f0041c438359cf5b8a
-     
-        hashGenesisBlock = uint256S("0x0");
-        if ( genesis.GetHash() !=  hashGenesisBlock)
-        {
-            printf("\nold mainnet time: %d\n", genesis.nTime);
-            printf("old mainnet genesis nonce: %d\n", genesis.nNonce);
-            printf("old mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
-            printf("old mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-            
-            for(genesis.nNonce == 0; genesis.GetHash() > bnProofOfWorkLimit; genesis.nNonce++){ 
-              if(genesis.nNonce%10000==0){
-                printf("%d ",genesis.nNonce);  
-              }
-            } 
-            LogPrint("gen:","new mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-            LogPrint("gen:","new mainnet genesis nonce: %d\n", genesis.nNonce);
-            LogPrint("gen:","new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
-
-            printf("\nnew mainnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-            printf("new mainnet genesis nonce: %d  time:%u\n", genesis.nNonce, genesis.nTime);
-            printf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
-            
-            exit(0);
-        }
-        */
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x000006b9477e087c9b7c1b5b94619a7b4f1616b88a1ca2f0041c438359cf5b8a"));
         assert(genesis.hashMerkleRoot == uint256("0xd53fd768da2794312a1c6879b11baa6325be9ab99b43d52a6b09b5017fbb5789"));
