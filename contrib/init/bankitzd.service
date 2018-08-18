@@ -1,0 +1,26 @@
+[Unit]
+Description=BKZ's distributed currency daemon
+After=network.target
+
+[Service]
+User=bankitz
+Group=bankitz
+
+Type=forking
+PIDFile=/var/lib/bankitzd/bankitzd.pid
+
+ExecStart=/usr/bin/bankitzd -daemon -pid=/var/lib/bankitzd/bankitzd.pid \
+          -conf=/etc/bankitz/bankitz.conf -datadir=/var/lib/bankitzd
+
+ExecStop=-/usr/bin/bankitz-cli -conf=/etc/bankitz/bankitz.conf \
+         -datadir=/var/lib/bankitzd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

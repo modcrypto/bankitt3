@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BKZ
+Comment=BKZ P2P Cryptocurrency
+Exec=bankitz-qt %u
+Terminal=false
+Type=Application
+Icon=bankitz128
+MimeType=x-scheme-handler/bankitz;
+Categories=Office;Finance;
+Name[en_US]=bankitz-qt.desktop

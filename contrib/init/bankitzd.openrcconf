@@ -1,0 +1,26 @@
+# /etc/conf.d/bankitzd: config file for /etc/init.d/bankitzd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/bankitz/bankitz.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/bankitzd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/bankitzd.pid"
+
+# Where to write bankitzd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/bankitzd"
+
+# User and group to own bankitzd process
+#BITCOIND_USER="bankitz"
+#BITCOIND_GROUP="bankitz"
+
+# Path to bankitzd executable
+#BITCOIND_BIN="/usr/bin/bankitzd"
+
+# Nice value to run bankitzd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""
