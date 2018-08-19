@@ -56,18 +56,20 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 //UpdateTip: new best=000001e3a9376321dbdee64a8bf0717a59119b7e2498f8f69ecab9527f7f5c90  height=26  log2_work=24.840521  tx=27  date=2018-08-18 06:11:19 progress=1.000000  cache=26 time=1534572679
 //UpdateTip: new best=00000048e6c897a687474d073d1b913d224fc5826267d18fe90bf36f6fed6f61  height=80  log2_work=28.077972  tx=84  date=2018-08-18 07:42:12 progress=1.000000  cache=10 time=1534578132
+//UpdateTip: new best=000000003a4468e662099b84e5ee61f3b52234bc01e395128838615f1fb76f4f  height=500  log2_work=45.93481  tx=542  date=2018-08-19 03:03:41 progress=1.000000  cache=33 time=1534647821
 
 
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
     (26, uint256("000001e3a9376321dbdee64a8bf0717a59119b7e2498f8f69ecab9527f7f5c90"))    
     (80, uint256("00000048e6c897a687474d073d1b913d224fc5826267d18fe90bf36f6fed6f61"))    
+    (500, uint256("000000003a4468e662099b84e5ee61f3b52234bc01e395128838615f1fb76f4f"))    
 ;
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1534578132, // * UNIX timestamp of last checkpoint block
-    84,       // * total number of transactions between genesis and last checkpoint
+    1534647821, // * UNIX timestamp of last checkpoint block
+    542,       // * total number of transactions between genesis and last checkpoint
              //   (the tx=... number in the SetBestChain debug.log lines)
     480      // * estimated number of transactions per day after checkpoint
 };
@@ -131,7 +133,6 @@ public:
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 0 * COIN;
         txNew.vout[0].scriptPubKey = CScript() << ParseHex("0466317d3a221549c07f74f2621a255cf18d307136bf9e93907bcebe61e829eb8afb78c05706b280fcfdf4775ff208111943fcb621316d48790f6e4201a722e9df") << OP_CHECKSIG;
-        // old 049caeb38afaa6465a1fd3b8d8d29ad1a141b4f94f925c9d8a1baab232cfa35319a325cfadd7aa2b5ca717e4117b6cc8b1a88a1e28abbf0668a3a4e7f923aebbfc
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
@@ -139,7 +140,7 @@ public:
         genesis.nTime  = 1534554123;
         genesis.nBits  = 0x1e0ffff0;
         genesis.nNonce = 886886;//3095779;//498585;
-		
+
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x000006b9477e087c9b7c1b5b94619a7b4f1616b88a1ca2f0041c438359cf5b8a"));
         assert(genesis.hashMerkleRoot == uint256("0xd53fd768da2794312a1c6879b11baa6325be9ab99b43d52a6b09b5017fbb5789"));
