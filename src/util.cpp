@@ -519,9 +519,13 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
                                     "server=1\n"
                                     "rpcuser=bankitz\n"
                                     "rpcpassword=%s\n"
+                                    "rpcallowip=127.0.0.1\n"
                                     "rpcport=31662\n"
+                                    "# - Masternode Config -\n"
                                     "#masternode=1\n"
                                     "#masternodeprivkey=\n"
+                                    "#externalip=IPADDRESS\n"
+                                    "#masternodeaddr=IPADDRESS:14561\n"
                                     ,rand_pwd );
 
            fwrite(strHeader.c_str(), std::strlen(strHeader.c_str()), 1, configFile);

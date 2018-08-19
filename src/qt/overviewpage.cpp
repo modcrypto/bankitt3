@@ -592,12 +592,12 @@ void OverviewPage::updateInformation(){
     }
     txt += tr("<li>Connection : <span> %1</span> </li>").arg( clientModel->getNumConnections()); 
     txt += tr("<li>Master Nodes <span> %1</span><br> </li>").arg( clientModel->getMasternodeCountString()); 
-    txt += tr("<li>Links: <a href='http://www.bankitz.network/'>Website</a>  "); 
-    txt += tr("<a href='http://explorer.bankitz.network/'>Block Explorer</a>  "); 
+    txt += tr("<li>Links: <a href='http://www.bankitz.online/'>Website</a>  "); 
+    txt += tr("<a href='http://explorer.bankitz.online/'>Block Explorer</a>  "); 
     txt += tr("<a href='https://github.com/modcrypto/bankitz/releases'>Download Wallet</a> "); 
     txt += tr("</li>"); 
     txt += tr("<li>Socials : "); 
-    txt += tr("<a href='https://discord.gg/7vAFX6v'>Discord</a> "); 
+    txt += tr("<a href='https://discord.gg/HUq28y3'>Discord</a> "); 
     txt += tr(" </li></ul>");
     ui->MessageLabel->setText(txt);    
 }
