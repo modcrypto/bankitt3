@@ -74,7 +74,6 @@ public:
     int64_t TargetSpacing() const { return nTargetSpacing; }
     int64_t Interval() const { return nTargetTimespan / nTargetSpacing; }
     int LAST_POW_BLOCK() const { 
-        //if(strNetworkID=="main") return 500000;
         return nLastPOWBlock; 
     }
     int COINBASE_MATURITY() const { return nMaturity; }

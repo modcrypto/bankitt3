@@ -287,8 +287,26 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
     bool hasPayment = true;
     CScript payee;
     CAmount masternodeCoin=0;
-    
-    if(!masternodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)) {
+    int h = pindexPrev->nHeight+1;
+    bool found=true;
+    int n=0;
+    do{
+     while(!(found=masternodePayments.GetBlockPayee(h, payee))){
+      h--; n++;
+      if(n>8) break;
+     }
+     if(found && n<=8){
+       if(mnodeman.Find(payee)==NULL){
+           LogPrintf("CreateNewBlock: invalid masternode find again %d %d\n",h,n);
+          // invalid masternode find again.
+          h--; n++;
+          found=false;
+          continue; 
+       }
+     } 
+    } while(false);
+
+    if(!found) {
         // no masternode detected...
         int nCount = 0;
         CMasternode *winningNode = mnodeman.GetCurrentMasterNode(1);
@@ -590,8 +608,16 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew, int64
             }
         }
     }
-
-    LogPrintf("CMasternodePayments::IsTransactionValid - Missing required payment of %s to %s\n", FormatMoney(requiredMasternodePayment).c_str(), strPayeesPossible.c_str());
+    
+    BOOST_FOREACH (CTxOut out, txNew.vout) {
+        if(mnodeman.Find(out.scriptPubKey)!=NULL) return true;
+    }
+    LogPrintf("CMasternodeBlockPayees::IsTransactionValid - Missing required payment of %s to %s\n", FormatMoney(requiredMasternodePayment).c_str(), strPayeesPossible.c_str());
+    
+    if(nBlockHeight<10000){
+        LogPrintf("CMasternodeBlockPayees::IsTransactionValid Skip this error.\n");
+        return true;
+    } 
     return false;
 }
 
@@ -630,7 +656,7 @@ std::string CMasternodePayments::GetRequiredPaymentsString(int nBlockHeight)
 bool CMasternodePayments::IsTransactionValid(const CTransaction& txNew, int nBlockHeight, int64_t nTime)
 {
     LOCK(cs_mapMasternodeBlocks);
-
+    
     if (mapMasternodeBlocks.count(nBlockHeight)) {
         return mapMasternodeBlocks[nBlockHeight].IsTransactionValid(txNew, nTime);
     }
