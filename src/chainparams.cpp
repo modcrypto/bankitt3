@@ -119,7 +119,7 @@ public:
         nMinerThreads = 0;
         nTargetTimespan = 1 * 60; // BKZ: 1 day
         nTargetSpacing = 3 * 60;  // BKZ: 3 minute
-        nLastPOWBlock = 130000;   // BKZ: 6 month 
+        nLastPOWBlock = 140000;   // BKZ: 6 month 
         nMaturity = 40;  // 2 hours
         nMasternodeCountDrift = 20;
 	    nMasternodeColleteralLimxDev = 10000; 

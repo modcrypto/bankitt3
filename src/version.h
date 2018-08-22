@@ -12,7 +12,7 @@
  * network protocol versioning
  */
 static const int PROTOCOL_P2P_PORT    = 14561;
-static const int PROTOCOL_VERSION     = 70716;
+static const int PROTOCOL_VERSION     = 70717;
 static const int MIN_PROTOCOL_VERSION = 70716;
 
 //! initial proto version, to be increased after version/verack negotiation

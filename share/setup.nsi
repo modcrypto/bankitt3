@@ -1,4 +1,4 @@
-Name "BanKitt Core (-bit)"
+Name "BanKitz Community (32-bit)"
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
@@ -10,25 +10,25 @@ SetCompressor /SOLID lzma
 !define URL http://bit.bankitzs/
 
 # MUI Symbol Definitions
-!define MUI_ICON "/home/wachi/public/dev2/bankitz/share/pixmaps/bitcoin.ico"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "/home/wachi/public/dev2/bankitz/share/pixmaps/nsis-wizard.bmp"
+!define MUI_ICON "/home/wachi/public/dev2/bankitz-win/share/pixmaps/bitcoin.ico"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "/home/wachi/public/dev2/bankitz-win/share/pixmaps/nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
-!define MUI_HEADERIMAGE_BITMAP "/home/wachi/public/dev2/bankitz/share/pixmaps/nsis-header.bmp"
+!define MUI_HEADERIMAGE_BITMAP "/home/wachi/public/dev2/bankitz-win/share/pixmaps/nsis-header.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER "BanKitt Core"
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "BanKitz Community"
 !define MUI_FINISHPAGE_RUN $INSTDIR\bankitz-qt.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/home/wachi/public/dev2/bankitz/share/pixmaps/nsis-wizard.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP "/home/wachi/public/dev2/bankitz-win/share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Included files
 !include Sections.nsh
 !include MUI2.nsh
-!if "" == "64"
+!if "32" == "64"
 !include x64.nsh
 !endif
 
@@ -48,8 +48,8 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile /home/wachi/public/dev2/bankitz/bankitz-${VERSION}-win-setup.exe
-!if "" == "64"
+OutFile /home/wachi/public/dev2/bankitz-win/bankitz-${VERSION}-win32-setup.exe
+!if "32" == "64"
 InstallDir $PROGRAMFILES64\BKZ
 !else
 InstallDir $PROGRAMFILES\BKZ
@@ -58,7 +58,7 @@ CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion ${VERSION}.0
+VIProductVersion ${VERSION}.2
 VIAddVersionKey ProductName "BanKitt Core"
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
@@ -73,14 +73,14 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File /home/wachi/public/dev2/bankitz/release/bankitz-qt.exe
-    File /oname=COPYING.txt /home/wachi/public/dev2/bankitz/COPYING
-    File /oname=readme.txt /home/wachi/public/dev2/bankitz/doc/README_windows.txt
+    File /home/wachi/public/dev2/bankitz-win/release/bankitz-qt.exe
+    File /oname=COPYING.txt /home/wachi/public/dev2/bankitz-win/COPYING
+    File /oname=readme.txt /home/wachi/public/dev2/bankitz-win/doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File /home/wachi/public/dev2/bankitz/release/bankitzd.exe
-    File /home/wachi/public/dev2/bankitz/release/bankitz-cli.exe
+    File /home/wachi/public/dev2/bankitz-win/release/bankitzd.exe
+    File /home/wachi/public/dev2/bankitz-win/release/bankitz-cli.exe
     SetOutPath $INSTDIR\doc
-    File /r /home/wachi/public/dev2/bankitz/doc\*.*
+    File /r /home/wachi/public/dev2/bankitz-win/doc\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
 
@@ -160,7 +160,7 @@ SectionEnd
 # Installer functions
 Function .onInit
     InitPluginsDir
-!if "" == "64"
+!if "32" == "64"
     ${If} ${RunningX64}
       ; disable registry redirection (enable access to 64-bit portion of registry)
       SetRegView 64

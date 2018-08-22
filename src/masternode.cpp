@@ -167,8 +167,7 @@ uint256 CMasternode::CalculateScore(int mod, int64_t nBlockHeight)
 
     uint256 hash = 0;
     uint256 aux = vin.prevout.hash + vin.prevout.n;
-    if(nBlockHeight<=1) nBlockHeight = 1;
-
+ 
     if (!GetBlockHash(hash, nBlockHeight)) {
         LogPrintf("CalculateScore ERROR - nHeight %d - Returned 0\n", nBlockHeight);
         return 0;

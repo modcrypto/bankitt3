@@ -1629,11 +1629,13 @@ CBlockIndex* GetBlockIndex(int height){
 int LastPOWBlock = 1000;
 int64_t GetBlockValue(int nHeight,int64_t nTime)
 {    
- 
+    LastPOWBlock = Params().LAST_POW_BLOCK();
 	if (nHeight == 0)    return       1  * COIN;
 	if (nHeight == 1)    return  520000  * COIN; // DEVEVELOPMENT FUND and LISTING FEE
 	if (nHeight == 2)    return 6300000  * COIN; // FOR SWAPPING
 	if (nHeight < 100)   return      50  * COIN;
+    if (nHeight >1000 && nHeight < 2100)   return 20 * COIN;
+    if (nHeight >=2100 && nHeight <= 4000) return 140 * COIN;
 	int64_t nSubsidy = 100 * COIN;	
     int block_per_month = (30*24*60*60) / Params().TargetSpacing();
     if(nHeight<=LastPOWBlock){ // lastpowblock
@@ -1653,6 +1655,7 @@ int64_t GetBlockValue(int nHeight,int64_t nTime)
 
 int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, CAmount nMasternodeCoin)
 {
+    LastPOWBlock = Params().LAST_POW_BLOCK();
    	int64_t ret = 0;
     ret = blockValue/100*10;
     double difficulty = 0;
@@ -1667,6 +1670,9 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     }
     if(nHeight>LastPOWBlock){
       ret = blockValue/2;
+    }
+    if (nHeight >1000 && nHeight < 2100){
+      ret = blockValue/2;        
     }
     if(nMasternodeCoin==10000*COIN)  ret = ret/100*60;
 	return ret;
@@ -5396,7 +5402,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 //       it was the one which was commented out
 int ActiveProtocol()
 {
-    return MIN_PROTOCOL_VERSION;
+    if(chainActive.Height()<2090) return 70716;
+    else return PROTOCOL_VERSION;
 }
 
 // requires LOCK(cs_vRecvMsg)
