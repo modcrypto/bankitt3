@@ -193,13 +193,13 @@ For **Ubuntu 16.04***
 
 ```
 sudo apt-get install libzmq3-dev libminiupnpc-dev -y
-wget https://github.com/modcrypto/bankitz/releases/download/v2.1.0/bankitz-2.1.0-x86_64-linux-gnu.tar.gz
-tar -zxvf bankitz-2.1.0-x86_64-linux-gnu.tar.gz
-rm bankitz-2.1.0-x86_64-linux-gnu.tar.gz
-chmod +x ./bankitz-2.1.0/bin/bankitzd
-sudo mv ./bankitz-2.1.0/bin/bankitzd /usr/local/bin
-chmod +x ./bankitz-2.1.0/bin/bankitz-cli
-sudo mv ./bankitz-2.1.0/bin/bankitz-cli /usr/local/bin
+wget https://github.com/modcrypto/bankitz/releases/download/3.0.0.2/bankitz_ubuntu16.04_3.0.0.2.tar.gz
+tar -zxvf bankitz_ubuntu16.04_3.0.0.2.tar.gz
+rm bankitz_ubuntu16.04_3.0.0.2.tar.gz
+chmod +x ./linux/bankitzd
+sudo mv ./linux/bankitzd /usr/local/bin
+chmod +x ./linux/bankitz-cli
+sudo mv ./linux/bankitz-cli /usr/local/bin
 cd ~
 bankitzd
 ```
@@ -321,6 +321,3 @@ You should now be able to see your MasterNode(s) in your wallet under the master
 
 Cheers !
 
-If you found this guide helpfull, feel free to donate:
-
-BKZ - AVhZr3Sr96fVWCvKSqd6kGPWEQB9U89LUy
