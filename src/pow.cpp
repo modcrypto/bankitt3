@@ -107,7 +107,9 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
         bnNew = Params().ProofOfWorkLimit();
     }
 
-    
+    if (pindexLast->nHeight>= 80131 &&  pindexLast->nHeight<= 80150){  // fixed block stop
+       bnNew = Params().ProofOfWorkLimit();
+    }    
 	LogPrintf("GetNextWorkRequired RETARGET\n");
     LogPrintf("nActualTimespan = %d\n", nActualTimespan);
     LogPrintf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.ToString());
