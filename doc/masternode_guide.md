@@ -193,9 +193,9 @@ For **Ubuntu 16.04***
 
 ```
 sudo apt-get install libzmq3-dev libminiupnpc-dev -y
-wget https://github.com/modcrypto/bankitz/releases/download/3.0.0.2/bankitz_ubuntu16.04_3.0.0.2.tar.gz
-tar -zxvf bankitz_ubuntu16.04_3.0.0.2.tar.gz
-rm bankitz_ubuntu16.04_3.0.0.2.tar.gz
+wget https://github.com/modcrypto/bankitz/releases/download/3.0.0.3/bankitz_ubuntu16.04_3.0.0.3.tar.gz
+tar -zxvf bankitz_ubuntu16.04_3.0.0.3.tar.gz
+rm bankitz_ubuntu16.04_3.0.0.3.tar.gz
 chmod +x ./linux/bankitzd
 sudo mv ./linux/bankitzd /usr/local/bin
 chmod +x ./linux/bankitz-cli
